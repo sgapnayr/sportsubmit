@@ -11,11 +11,13 @@ interface Props {
     setAthleteName: React.Dispatch<React.SetStateAction<string>>
     dob: string
     setDob: React.Dispatch<React.SetStateAction<string>>
+    location: string
+    setLocation: React.Dispatch<React.SetStateAction<string>>
 }
 
-const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName, dob, setDob }) => {
+const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation }) => {
     const addToList = () => {
-        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob })
+        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location })
         setNext(next + 1)
         setAthleteName('')
         setDob('')
@@ -74,7 +76,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
             </div>
             <div className="InputDiv">
                 <h3>Location:</h3>
-                <input type="text" className='InputBox' placeholder='(e.g. Boston)' />
+                <input type="text" className='InputBox' placeholder='(e.g. Boston)' onChange={(e) => setLocation(e.target.value)} value={dob} />
             </div>
             <div className="InputDiv">
                 <h3>Team:</h3>

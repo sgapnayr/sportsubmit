@@ -8,6 +8,10 @@ const AthleteSchema = new mongoose.Schema({
     dob: {
         type: Date,
         required: false
+    },
+    loc: {
+        type: String,
+        required: true
     }
 })
 
