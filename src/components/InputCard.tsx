@@ -170,8 +170,8 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     </button>
                     <button className='Button Red' onClick={() => setNext(next - 1)}>
                         <div className="ButtonText">
+                            <div className="Icon Reverse"><FcNext /></div>
                             <div className="Text">Go Back</div>
-                            <div className="Icon"><BiExit /></div>
                         </div>
                     </button>
                 </div> : null
