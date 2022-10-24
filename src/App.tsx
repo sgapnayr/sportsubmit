@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Image from './components/Image';
 import InputCard from './components/InputCard';
+import { Athlete } from './components/model';
 import TitleCard from './components/TitleCard';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   const [sport, setSport] = useState<string>('')
   const [aboutProfile, setAboutProfile] = useState<string>('')
   const [interests, setInterests] = useState<string>('')
+
+  const [athleteList, setAthleteList] = useState<Athlete[]>([])
 
   return (
     <div className="App">
@@ -41,6 +44,8 @@ function App() {
         setAboutProfile={setAboutProfile}
         interests={interests}
         setInterests={setInterests}
+        athleteList={athleteList}
+        setAthleteList={setAthleteList}
       />
     </div>
   );

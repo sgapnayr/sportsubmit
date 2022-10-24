@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Styles.css'
 import Axios from 'axios'
 import { StringSchemaDefinition } from 'mongoose'
+import { Athlete } from './model'
 
 interface Props {
     next: number
@@ -24,9 +25,11 @@ interface Props {
     setAboutProfile: React.Dispatch<React.SetStateAction<string>>
     interests: string
     setInterests: React.Dispatch<React.SetStateAction<string>>
+    athleteList: Athlete[]
+    setAthleteList: React.Dispatch<React.SetStateAction<Athlete[]>>
 }
 
-const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests }) => {
+const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
     const addToList = () => {
         setNext(next + 1)
     }
@@ -65,6 +68,12 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile, sprt: sport, about: aboutProfile, intrsts: interests })
     }
 
+    useEffect(() => {
+        Axios.get('http://localhost:3001/read').then((res) => {
+            setAthleteList(res.data)
+        })
+    }, [])
+
     return (
         <div className='InputCard'>
 
@@ -79,10 +88,10 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
 
             {next === 2 ? <div className='EditPage'>
                 <div className="InputDiv">
-                    <h1>Edit Page</h1>
+                    <h1>Your Profile</h1>
                 </div>
                 <button className='Button' onClick={submitButton}>
-                    Next
+                    Confirm
                 </button>
             </div> : null}
 
@@ -147,6 +156,10 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 Next
             </button>
 
+            <h1>Athletes</h1>
+            {/* {athleteList.map(athlete => {
+                return <li key={Date.now()}>{athlete.dob}</li>
+            })} */}
         </div>
     )
 }

@@ -29,6 +29,17 @@ app.post('/insert', async (req, res) => {
 
 })
 
+app.get('/read', async (req, res) => {
+    AthleteModel.find({}, (error, result) => {
+        if (error) {
+            res.send(error)
+        }
+
+        res.send(result)
+
+    })
+})
+
 app.listen(3001, () => {
     console.log('Server Running on Port 3001')
 })
