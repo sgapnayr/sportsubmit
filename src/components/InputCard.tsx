@@ -15,6 +15,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
     const addToList = () => {
         Axios.post('http://localhost:3001/insert', { name: athleteName })
         setNext(next + 1)
+        setAthleteName('')
     }
 
     return (
@@ -33,7 +34,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                 <div className="InputDiv">
                     <h1>Edit Page</h1>
                 </div>
-                <button className='Button' onClick={() => setNext(3)}>
+                <button className='Button' onClick={() => addToList}>
                     Done
                 </button>
             </div> : null}
@@ -54,7 +55,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                     <h3>Interests</h3>
                     <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' />
                 </div>
-                <button className='Button' onClick={() => setNext(2)}>
+                <button className='Button' onClick={() => addToList}>
                     Next
                 </button>
 
