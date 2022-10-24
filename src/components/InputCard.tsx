@@ -3,7 +3,6 @@ import './Styles.css'
 import Axios from 'axios'
 import { Athlete } from './model'
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
-import { BiExit } from 'react-icons/bi'
 import { FcNext } from 'react-icons/fc'
 import { FiThumbsUp } from 'react-icons/fi'
 
@@ -115,7 +114,6 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     <h1>
                         <div className="ButtonText">
                             <div className="Text">Thank you for your submission!</div>
-                            <div className="Icon"><FiThumbsUp /></div>
                         </div>
                     </h1>
                 </div>
