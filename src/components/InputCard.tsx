@@ -8,7 +8,7 @@ interface Props {
     setNext: React.Dispatch<React.SetStateAction<number>>
     setGender: React.Dispatch<React.SetStateAction<number>>
     athleteName: string
-    setAthleteName: React.Dispatch<React.SetStateaAction<string>>
+    setAthleteName: React.Dispatch<React.SetStateAction<string>>
 }
 
 const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName }) => {
