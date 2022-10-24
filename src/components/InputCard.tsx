@@ -133,7 +133,7 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                                     />
                                     : null}
                                 <div className="Icons">
-                                    <button className='EditButton' onClick={() => updateAthlete(athlete._id)}>< AiFillEdit /></button>
+                                    {/* <button className='EditButton' onClick={() => updateAthlete(athlete._id)}>< AiFillEdit /></button> */}
                                     <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
                                 </div>
                             </div>
