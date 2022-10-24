@@ -12,6 +12,9 @@ function App() {
   const [location, setLocation] = useState<string>('')
   const [team, setTeam] = useState<string>('')
   const [genderProfile, setGenderProfile] = useState<string>('')
+  const [sport, setSport] = useState<string>('')
+  const [aboutProfile, setAboutProfile] = useState<string>('')
+  const [interests, setInterests] = useState<string>('')
 
   return (
     <div className="App">
@@ -32,6 +35,12 @@ function App() {
         setTeam={setTeam}
         genderProfile={genderProfile}
         setGenderProfile={setGenderProfile}
+        sport={sport}
+        setSport={setSport}
+        aboutProfile={aboutProfile}
+        setAboutProfile={setAboutProfile}
+        interests={interests}
+        setInterests={setInterests}
       />
     </div>
   );

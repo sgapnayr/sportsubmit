@@ -18,8 +18,11 @@ app.post('/insert', async (req, res) => {
     const location = req.body.loc
     const team = req.body.tm
     const gender = req.body.gndr
+    const sport = req.body.sprt
+    const aboutAthlete = req.body.about
+    const interests = req.body.intrsts
 
-    const athlete = new AthleteModel({ name: athleteName, dob: dateOfBirth, loc: location, tm: team, gndr: gender })
+    const athlete = new AthleteModel({ name: athleteName, dob: dateOfBirth, loc: location, tm: team, gndr: gender, sprt: sport, about: aboutAthlete, intrsts: interests })
 
     try { await athlete.save() }
     catch (error) { console.log(error) }

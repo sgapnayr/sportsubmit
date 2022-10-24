@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './Styles.css'
 import Axios from 'axios'
+import { StringSchemaDefinition } from 'mongoose'
 
 interface Props {
     next: number
-    gender: number
     setNext: React.Dispatch<React.SetStateAction<number>>
+    gender: number
     setGender: React.Dispatch<React.SetStateAction<number>>
     athleteName: string
     setAthleteName: React.Dispatch<React.SetStateAction<string>>
@@ -17,14 +18,17 @@ interface Props {
     setTeam: React.Dispatch<React.SetStateAction<string>>
     genderProfile: string
     setGenderProfile: React.Dispatch<React.SetStateAction<string>>
+    sport: string
+    setSport: React.Dispatch<React.SetStateAction<string>>
+    aboutProfile: string
+    setAboutProfile: React.Dispatch<React.SetStateAction<string>>
+    interests: string
+    setInterests: React.Dispatch<React.SetStateAction<string>>
 }
 
-const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile }) => {
+const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests }) => {
     const addToList = () => {
-        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile })
         setNext(next + 1)
-        setAthleteName('')
-        setDob('')
     }
 
     const maleButton = () => {
@@ -40,6 +44,25 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
     const otherButton = () => {
         setGender(2)
         setGenderProfile('Other')
+    }
+
+    const addSport = (sport: string) => {
+        setSport(sport)
+    }
+
+    const submitButton = () => {
+        setNext(0)
+        setGender(3)
+        setAthleteName('')
+        setDob('')
+        setNext(next + 1)
+        setLocation('')
+        setTeam('')
+        setGenderProfile('')
+        setSport('')
+        setAboutProfile('')
+        setInterests('')
+        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile, sprt: sport, about: aboutProfile, intrsts: interests })
     }
 
     return (
@@ -58,7 +81,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                 <div className="InputDiv">
                     <h1>Edit Page</h1>
                 </div>
-                <button className='Button' onClick={addToList}>
+                <button className='Button' onClick={submitButton}>
                     Next
                 </button>
             </div> : null}
@@ -66,18 +89,29 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
             {next === 1 ? <div className='PopUp'>
                 <div className="InputDiv Sport">
                     <h3>Sport:</h3>
-                    <select name="" id="">
-                        <option value="">Pick Your Sport</option>
-                        <option value="">Baseball</option>
+                    <select onChange={(e) => addSport(e.target.value)}>
+                        <option value="none">Pick Your Sport</option>
+                        <option value="American Football">American Football</option>
+                        <option value="Archery">Archery</option>
+                        <option value="Automobile Racing">Automobile Racing</option>
+                        <option value="Baseball">Baseball</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Golf">Golf</option>
+                        <option value="Snow Boarding">Snow Boarding</option>
+                        <option value="Soccer">Soccer</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Tennis">Tennis</option>
                     </select>
                 </div>
                 <div className="InputDiv">
                     <h3>About</h3>
-                    <input type="text" className='InputBox About' placeholder='I really like to...' />
+                    <input type="text" className='InputBox About' placeholder='How did you get into your sport?' onChange={(e) => setAboutProfile(e.target.value)} value={aboutProfile} />
                 </div>
                 <div className="InputDiv">
                     <h3>Interests</h3>
-                    <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' />
+                    <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' onChange={(e) => setInterests(e.target.value)} value={interests} />
                 </div>
                 <button className='Button' onClick={addToList}>
                     Next
