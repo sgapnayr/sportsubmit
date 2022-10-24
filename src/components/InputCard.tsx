@@ -14,6 +14,7 @@ interface Props {
 const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName }) => {
     const addToList = () => {
         Axios.post('http://localhost:3001/insert', { name: athleteName })
+        setNext(next + 1)
     }
 
     return (
@@ -62,7 +63,6 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
             <div className="InputDiv">
                 <h3>Enter Athlete Name:</h3>
                 <input type="text" className='InputBox' placeholder='Enter Athlete Name...' onChange={(e) => setAthleteName(e.target.value)} />
-                <button onClick={addToList}>SEND TO BACK END</button>
             </div>
             <div className="InputDiv">
                 <h3>Date of Birth:</h3>
@@ -84,7 +84,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                     <button className={gender === 2 ? 'GenderButtonActive' : 'GenderButton'} onClick={() => setGender(2)}>Other</button>
                 </div>
             </div>
-            <button className='Button' onClick={() => setNext(1)}>
+            <button className='Button' onClick={addToList}>
                 Next
             </button>
 
