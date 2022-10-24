@@ -3,6 +3,7 @@ import './Styles.css'
 import Axios from 'axios'
 import { StringSchemaDefinition } from 'mongoose'
 import { Athlete } from './model'
+import { idText } from 'typescript'
 
 interface Props {
     next: number
@@ -30,6 +31,8 @@ interface Props {
 }
 
 const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
+    const [newAthleteName, setnewAthleteName] = useState<string>('')
+
     const addToList = () => {
         setNext(next + 1)
     }
@@ -72,7 +75,15 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         Axios.get('http://localhost:3001/read').then((res) => {
             setAthleteList(res.data)
         })
-    }, [])
+    }, [athleteList])
+
+    const updateAthlete = (id: string) => {
+        Axios.put('http://localhost:3001/update', { id: id, newAthleteName: newAthleteName })
+    }
+
+    const deleteAthlete = (id: string) => {
+        Axios.delete(`http://localhost:3001/delete/${id}`)
+    }
 
     return (
         <div className='InputCard'>
@@ -89,6 +100,16 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
             {next === 2 ? <div className='EditPage'>
                 <div className="InputDiv">
                     <h1>Your Profile</h1>
+                </div>
+                <div className="ProfilePage">
+                    <p><span className='ProfileTag'>Name:</span> {athleteName}</p>
+                    <p><span className='ProfileTag'>Date of Birth:</span> {dob}</p>
+                    <p><span className='ProfileTag'>Location:</span> {location}</p>
+                    <p><span className='ProfileTag'>Team:</span> {team}</p>
+                    <p><span className='ProfileTag'>Gender:</span>{gender === 0 ? 'Male' : gender === 1 ? 'Female' : 'Other'}</p>
+                    <p><span className='ProfileTag'>Sport:</span> {sport}</p>
+                    <p><span className='ProfileTag'>About:</span> {aboutProfile.length > 10 ? aboutProfile.slice(0, 20) + '...' : aboutProfile}</p>
+                    <p><span className='ProfileTag'>Interests:</span> {interests}</p>
                 </div>
                 <button className='Button' onClick={submitButton}>
                     Confirm
@@ -156,9 +177,21 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 Next
             </button>
 
-            {/* {athleteList.map(athlete => {
-                return <li key={Date.now()}>{athlete.dob}</li>
-            })} */}
+            {athleteList.map(athlete => {
+                return (
+                    <>
+                        <div key={Date.now()}>{athlete.dob}</div>
+                        <input
+                            type='text'
+                            placeholder='Edit Athlete Name...'
+                            onChange={(e) => setnewAthleteName(e.target.value)}
+                        />
+                        <button onClick={() => updateAthlete(athlete._id)}>Update (ICON)</button>
+                        <button onClick={() => deleteAthlete(athlete._id)}>Delete</button>
+                    </>
+                )
+            })}
+
         </div>
     )
 }

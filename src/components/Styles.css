@@ -191,6 +191,24 @@ select {
     outline: none;
 }
 
+.ProfilePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p {
+    font-weight: bold;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+}
+
+.ProfileTag {
+    color: rgb(201, 201, 201);
+    font-style: italic;
+    margin: .5rem;
+}
+
 @media (max-width: 800px) and (max-height: 900px) {
     img {
         width: 2rem;

@@ -40,6 +40,29 @@ app.get('/read', async (req, res) => {
     })
 })
 
+app.put('/update', async (req, res) => {
+    const newAthleteName = req.body.newAthleteName
+    const id = req.body.id
+
+    try {
+        await AthleteModel.findById(id, (error, updateAthlete) => {
+            updateAthlete.athleteName = newAthleteNames
+            updateAthlete.save()
+            res.send('update')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id
+
+    await AthleteModel.findByIdAndRemove(id).exec()
+    res.send('deleted')
+})
+
 app.listen(3001, () => {
     console.log('Server Running on Port 3001')
 })
