@@ -198,12 +198,12 @@ select {
     }
 
     .Image {
-        margin: 0rem;
+        margin: -2rem 0 2rem 0;
     }
 
     .Title {
         font-size: 2rem;
-        padding-top: 4rem;
+        padding-top: 2rem;
     }
 
     .InputBox {
