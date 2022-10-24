@@ -8,12 +8,11 @@ interface Props {
     setNext: React.Dispatch<React.SetStateAction<number>>
     setGender: React.Dispatch<React.SetStateAction<number>>
     athleteName: string
-    setAthleteName: React.Dispatch<React.SetStateAction<string>>
+    setAthleteName: React.Dispatch<React.SetStateaAction<string>>
 }
 
 const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName }) => {
     const addToList = () => {
-        console.log(athleteName)
         Axios.post('http://localhost:3001/insert', { name: athleteName })
     }
 
