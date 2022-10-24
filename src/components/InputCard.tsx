@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './Styles.css'
 import Axios from 'axios'
 import { Athlete } from './model'
-import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
+import { FcNext } from 'react-icons/fc'
+import { FiThumbsUp } from 'react-icons/fi'
 
 interface Props {
     next: number
@@ -106,7 +108,12 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
 
             {next === 3 ? <div className='Confirmation'>
                 <div className="InputDiv">
-                    <h1>Thanks for you submission!</h1>
+                    <h1>
+                        <div className="ButtonText">
+                            <div className="Text">Thank you for your submission!</div>
+                            <div className="Icon"><FiThumbsUp /></div>
+                        </div>
+                    </h1>
                 </div>
 
                 <div className="Profiles">
@@ -131,61 +138,75 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 </div>
 
                 <button className='Button' onClick={() => setNext(0)}>
-                    Done
-                </button>
-            </div> : null}
+                    <div className="ButtonText">
+                        <div className="Text">Done</div>
+                        <div className="Icon"><AiOutlineCheck /></div>
 
-            {next === 2 ? <div className='EditPage'>
-                <div className="InputDiv">
-                    <h1>Your Profile</h1>
-                </div>
-                <div className="ProfilePage">
-                    <p><span className='ProfileTag'>Name:</span> {athleteName}</p>
-                    <p><span className='ProfileTag'>Date of Birth:</span> {dob}</p>
-                    <p><span className='ProfileTag'>Location:</span> {location}</p>
-                    <p><span className='ProfileTag'>Team:</span> {team}</p>
-                    <p><span className='ProfileTag'>Gender:</span>{gender === 0 ? 'Male' : gender === 1 ? 'Female' : 'Other'}</p>
-                    <p><span className='ProfileTag'>Sport:</span> {sport}</p>
-                    <p><span className='ProfileTag'>About:</span> {aboutProfile.length > 10 ? aboutProfile.slice(0, 20) + '...' : aboutProfile}</p>
-                    <p><span className='ProfileTag'>Interests:</span> {interests}</p>
-                </div>
-                <button className='Button' onClick={submitButton}>
-                    Confirm
+                    </div>
                 </button>
-            </div> : null}
+            </div > : null}
 
-            {next === 1 ? <div className='PopUp'>
-                <div className="InputDiv Sport">
-                    <h3>Sport:</h3>
-                    <select onChange={(e) => addSport(e.target.value)}>
-                        <option value="none">Pick Your Sport</option>
-                        <option value="American Football">American Football</option>
-                        <option value="Archery">Archery</option>
-                        <option value="Automobile Racing">Automobile Racing</option>
-                        <option value="Baseball">Baseball</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Badminton">Badminton</option>
-                        <option value="Cycling">Cycling</option>
-                        <option value="Golf">Golf</option>
-                        <option value="Snow Boarding">Snow Boarding</option>
-                        <option value="Soccer">Soccer</option>
-                        <option value="Swimming">Swimming</option>
-                        <option value="Tennis">Tennis</option>
-                    </select>
-                </div>
-                <div className="InputDiv">
-                    <h3>About</h3>
-                    <input type="text" className='InputBox About' placeholder='How did you get into your sport?' onChange={(e) => setAboutProfile(e.target.value)} value={aboutProfile} />
-                </div>
-                <div className="InputDiv">
-                    <h3>Interests</h3>
-                    <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' onChange={(e) => setInterests(e.target.value)} value={interests} />
-                </div>
-                <button className='Button' onClick={secondAdd}>
-                    Next
-                </button>
+            {
+                next === 2 ? <div className='EditPage'>
+                    <div className="InputDiv">
+                        <h1>Your Profile</h1>
+                    </div>
+                    <div className="ProfilePage">
+                        <p><span className='ProfileTag'>Name:</span> {athleteName}</p>
+                        <p><span className='ProfileTag'>Date of Birth:</span> {dob}</p>
+                        <p><span className='ProfileTag'>Location:</span> {location}</p>
+                        <p><span className='ProfileTag'>Team:</span> {team}</p>
+                        <p><span className='ProfileTag'>Gender:</span>{gender === 0 ? 'Male' : gender === 1 ? 'Female' : 'Other'}</p>
+                        <p><span className='ProfileTag'>Sport:</span> {sport}</p>
+                        <p><span className='ProfileTag'>About:</span> {aboutProfile.length > 10 ? aboutProfile.slice(0, 20) + '...' : aboutProfile}</p>
+                        <p><span className='ProfileTag'>Interests:</span> {interests}</p>
+                    </div>
+                    <button className='Button' onClick={submitButton}>
+                        <div className="ButtonText">
+                            <div className="Text">Confirm</div>
+                            <div className="Icon"><FcNext /></div>
+                        </div>
+                    </button>
+                </div> : null
+            }
 
-            </div> : null}
+            {
+                next === 1 ? <div className='PopUp'>
+                    <div className="InputDiv Sport">
+                        <h3>Sport:</h3>
+                        <select onChange={(e) => addSport(e.target.value)}>
+                            <option value="none">Pick Your Sport</option>
+                            <option value="American Football">American Football</option>
+                            <option value="Archery">Archery</option>
+                            <option value="Automobile Racing">Automobile Racing</option>
+                            <option value="Baseball">Baseball</option>
+                            <option value="Basketball">Basketball</option>
+                            <option value="Badminton">Badminton</option>
+                            <option value="Cycling">Cycling</option>
+                            <option value="Golf">Golf</option>
+                            <option value="Snow Boarding">Snow Boarding</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Tennis">Tennis</option>
+                        </select>
+                    </div>
+                    <div className="InputDiv">
+                        <h3>About</h3>
+                        <input type="text" className='InputBox About' placeholder='How did you get into your sport?' onChange={(e) => setAboutProfile(e.target.value)} value={aboutProfile} />
+                    </div>
+                    <div className="InputDiv">
+                        <h3>Interests</h3>
+                        <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' onChange={(e) => setInterests(e.target.value)} value={interests} />
+                    </div>
+                    <button className='Button' onClick={secondAdd}>
+                        <div className="ButtonText">
+                            <div className="Text">Next</div>
+                            <div className="Icon"><FcNext /></div>
+                        </div>
+                    </button>
+
+                </div> : null
+            }
 
             <div className="InputDiv">
                 <h3>Enter Athlete Name:</h3>
@@ -212,10 +233,13 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 </div>
             </div>
             <button className='Button' onClick={firstAdd}>
-                Next
+                <div className="ButtonText">
+                    <div className="Text">Next</div>
+                    <div className="Icon"><FcNext /></div>
+                </div>
             </button>
 
-        </div>
+        </div >
     )
 }
 

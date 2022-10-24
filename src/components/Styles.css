@@ -60,6 +60,30 @@ img {
     box-shadow: 1px 1px 10px 5px rgba(255, 255, 255, .3);
 }
 
+.ButtonText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: .2s all ease-in-out;
+}
+
+.Icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.85);
+    transition: .2s all ease-in-out;
+    opacity: .5;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+}
+
+.Button:hover .Icon {
+    transform: translateX(25%) scale(.8);
+    opacity: .2;
+}
+
+
 .Button {
     background: -webkit-linear-gradient(133deg, rgb(243, 227, 51) 20%, rgb(244, 188, 83) 46%, rgb(243, 227, 51) 100%);
     color: white;
@@ -211,6 +235,7 @@ p {
 
 .Profiles {
     overflow: scroll;
+    height: 10rem;
 }
 
 .Profile {
