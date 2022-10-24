@@ -15,11 +15,10 @@ mongoose.connect('mongodb+srv://ryanpags:123123123@sportsubmit.1cljpzm.mongodb.n
 app.post('/insert', async (req, res) => {
     const athleteName = req.body.name
     const athlete = new AthleteModel({ name: athleteName })
-    try {
-        await athlete.save()
-    } catch (error) {
-        console.log(error)
-    }
+
+    try { await athlete.save() }
+    catch (error) { console.log(error) }
+
 })
 
 app.listen(3001, () => {
