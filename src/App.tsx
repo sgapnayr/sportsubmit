@@ -8,6 +8,8 @@ function App() {
   const [next, setNext] = useState<number>(0)
   const [gender, setGender] = useState<number>(4)
   const [athleteName, setAthleteName] = useState<string>('')
+  const [dob, setDob] = useState<string>('')
+  const [location, setLocation] = useState<string>('')
 
   return (
     <div className="App">
@@ -20,6 +22,10 @@ function App() {
         setGender={setGender}
         athleteName={athleteName}
         setAthleteName={setAthleteName}
+        dob={dob}
+        setDob={setDob}
+        location={location}
+        setLocation={setLocation}
       />
     </div>
   );

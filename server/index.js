@@ -14,7 +14,9 @@ mongoose.connect('mongodb+srv://ryanpags:123123123@sportsubmit.1cljpzm.mongodb.n
 
 app.post('/insert', async (req, res) => {
     const athleteName = req.body.name
-    const athlete = new AthleteModel({ name: athleteName })
+    const dateOfBirth = req.body.dob
+    const location = req.body.loc
+    const athlete = new AthleteModel({ name: athleteName, dob: dateOfBirth, loc: location })
 
     try { await athlete.save() }
     catch (error) { console.log(error) }

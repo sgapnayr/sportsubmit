@@ -9,13 +9,18 @@ interface Props {
     setGender: React.Dispatch<React.SetStateAction<number>>
     athleteName: string
     setAthleteName: React.Dispatch<React.SetStateAction<string>>
+    dob: string
+    setDob: React.Dispatch<React.SetStateAction<string>>
+    location: string
+    setLocation: React.Dispatch<React.SetStateAction<string>>
 }
 
-const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName }) => {
+const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation }) => {
     const addToList = () => {
-        Axios.post('http://localhost:3001/insert', { name: athleteName })
+        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob })
         setNext(next + 1)
         setAthleteName('')
+        setDob('')
     }
 
     return (
@@ -67,11 +72,11 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
             </div>
             <div className="InputDiv">
                 <h3>Date of Birth:</h3>
-                <input type="date" className='InputBox Date' placeholder='Oct 23, 1999' />
+                <input type="date" className='InputBox Date' placeholder='Oct 23, 1999' onChange={(e) => setDob(e.target.value)} />
             </div>
             <div className="InputDiv">
                 <h3>Location:</h3>
-                <input type="text" className='InputBox' placeholder='(e.g. Boston)' />
+                <input type="text" className='InputBox' placeholder='(e.g. Boston)' onChange={(e) => setLocation(e.target.value)} />
             </div>
             <div className="InputDiv">
                 <h3>Team:</h3>
