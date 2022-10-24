@@ -3,6 +3,7 @@ import './Styles.css'
 import Axios from 'axios'
 import { Athlete } from './model'
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
+import { BiExit } from 'react-icons/bi'
 import { FcNext } from 'react-icons/fc'
 import { FiThumbsUp } from 'react-icons/fi'
 
@@ -167,6 +168,12 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                             <div className="Icon"><FcNext /></div>
                         </div>
                     </button>
+                    <button className='Button Red' onClick={() => setNext(next - 1)}>
+                        <div className="ButtonText">
+                            <div className="Text">Go Back</div>
+                            <div className="Icon"><BiExit /></div>
+                        </div>
+                    </button>
                 </div> : null
             }
 
@@ -202,6 +209,12 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                         <div className="ButtonText">
                             <div className="Text">Next</div>
                             <div className="Icon"><FcNext /></div>
+                        </div>
+                    </button>
+                    <button className='Button Red' onClick={() => setNext(next - 1)}>
+                        <div className="ButtonText">
+                            <div className="Text">Go Back</div>
+                            <div className="Icon"><BiExit /></div>
                         </div>
                     </button>
 

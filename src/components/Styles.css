@@ -32,6 +32,7 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: -.25rem;
 }
 
 .InputBox {
@@ -99,7 +100,29 @@ img {
     border: 1px solid gold;
 }
 
+.Red {
+    background: -webkit-linear-gradient(133deg, rgb(243, 51, 51) 20%, rgb(244, 83, 83) 46%, rgb(243, 51, 51) 100%);
+    color: white;
+    font-size: 2rem;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    border-radius: 30px;
+    width: 90%;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, .3);
+    margin: 2rem 0 -1rem 0;
+    padding: .5rem;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+    border: 1px solid red;
+}
+
 .Button:hover {
+    background: rgb(255, 232, 103);
+    transform: scale(1.025);
+    box-shadow: 1px 1px 14px rgba(255, 255, 255, .5);
+    color: rgb(89, 89, 89);
+}
+
+.Red:hover {
     background: rgb(255, 232, 103);
     transform: scale(1.025);
     box-shadow: 1px 1px 14px rgba(255, 255, 255, .5);
@@ -171,7 +194,7 @@ img {
 
 .EditPage {
     position: absolute;
-    top: 25%;
+    top: 5%;
     background: rgb(8, 8, 8);
     background: linear-gradient(133deg, rgb(16, 16, 16) 0%, rgb(34, 34, 41) 50%, rgb(16, 16, 16) 90%, rgb(20, 20, 20) 100%);
     box-shadow: 1px 1px 10px 1000px rgba(0, 0, 0, .45);
@@ -184,7 +207,7 @@ img {
 
 .Confirmation {
     position: absolute;
-    top: 25%;
+    top: 20%;
     background: rgb(8, 8, 8);
     background: linear-gradient(133deg, rgb(16, 16, 16) 0%, rgb(34, 34, 41) 50%, rgb(16, 16, 16) 90%, rgb(20, 20, 20) 100%);
     box-shadow: 1px 1px 10px 1000px rgba(0, 0, 0, .45);
@@ -220,6 +243,7 @@ select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: -1rem 0;
 }
 
 p {
@@ -230,12 +254,15 @@ p {
 .ProfileTag {
     color: rgb(201, 201, 201);
     font-style: italic;
-    margin: .5rem;
+    margin: 0 .25rem;
 }
 
 .Profiles {
     overflow: scroll;
-    height: 10rem;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Profile {
@@ -256,6 +283,8 @@ p {
     font-weight: bold;
     justify-content: space-between;
     padding: 0 1rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    width: 90%;
 }
 
 .Profile:hover {
