@@ -37,7 +37,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                 <div className="InputDiv">
                     <h1>Edit Page</h1>
                 </div>
-                <button className='Button' onClick={() => addToList}>
+                <button className='Button' onClick={addToList}>
                     Done
                 </button>
             </div> : null}
@@ -58,7 +58,7 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
                     <h3>Interests</h3>
                     <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' />
                 </div>
-                <button className='Button' onClick={() => addToList}>
+                <button className='Button' onClick={addToList}>
                     Next
                 </button>
 
@@ -66,11 +66,11 @@ const InputCard: React.FC<Props> = ({ setNext, next, gender, setGender, athleteN
 
             <div className="InputDiv">
                 <h3>Enter Athlete Name:</h3>
-                <input type="text" className='InputBox' placeholder='Enter Athlete Name...' onChange={(e) => setAthleteName(e.target.value)} />
+                <input type="text" className='InputBox' placeholder='Enter Athlete Name...' onChange={(e) => setAthleteName(e.target.value)} value={athleteName} />
             </div>
             <div className="InputDiv">
                 <h3>Date of Birth:</h3>
-                <input type="date" className='InputBox Date' placeholder='Oct 23, 1999' onChange={(e) => setDob(e.target.value)} />
+                <input type="date" className='InputBox Date' placeholder='Oct 23, 1999' onChange={(e) => setDob(e.target.value)} value={dob} />
             </div>
             <div className="InputDiv">
                 <h3>Location:</h3>

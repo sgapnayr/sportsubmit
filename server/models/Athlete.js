@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const AthleteSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     dob: {
         type: Date,
-        required: true
+        required: false
     }
 })
 
