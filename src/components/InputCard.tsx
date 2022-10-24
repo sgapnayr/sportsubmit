@@ -98,6 +98,7 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         })
     }, [athleteList])
 
+    // Need to figure out bug
     const updateAthlete = (id: string) => {
         Axios.put('http://localhost:3001/update', { id: id, newAthleteName: newAthleteName })
     }
