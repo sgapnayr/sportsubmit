@@ -12,6 +12,14 @@ const AthleteSchema = new mongoose.Schema({
     loc: {
         type: String,
         required: true
+    },
+    tm: {
+        type: String,
+        required: true
+    },
+    gndr: {
+        type: String,
+        required: true
     }
 })
 

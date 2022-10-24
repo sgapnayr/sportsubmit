@@ -16,8 +16,10 @@ app.post('/insert', async (req, res) => {
     const athleteName = req.body.name
     const dateOfBirth = req.body.dob
     const location = req.body.loc
+    const team = req.body.tm
+    const gender = req.body.gndr
 
-    const athlete = new AthleteModel({ name: athleteName, dob: dateOfBirth, loc: location })
+    const athlete = new AthleteModel({ name: athleteName, dob: dateOfBirth, loc: location, tm: team, gndr: gender })
 
     try { await athlete.save() }
     catch (error) { console.log(error) }
