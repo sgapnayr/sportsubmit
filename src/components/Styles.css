@@ -209,6 +209,58 @@ p {
     margin: .5rem;
 }
 
+.Profiles {
+    overflow: scroll;
+}
+
+.Profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: rgb(25, 25, 25);
+    background: linear-gradient(133deg, rgb(82, 82, 82) 0%, rgba(50, 50, 60, 1) 47%, rgba(65, 65, 65, 1) 90%, rgb(65, 65, 65) 100%);
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: .75rem;
+    transition: .2s all ease-in-out;
+    border-radius: 30px;
+    transition: .2s all ease-in-out;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.Profile:hover {
+    background: rgb(234, 234, 234);
+    color: gray;
+}
+
+.EditButton {
+    background: transparent;
+    padding: .5rem;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: .25rem;
+    transition: .2s all ease-in-out;
+    border-radius: 30px;
+    transition: .2s all ease-in-out;
+}
+
+.Profile:hover .EditButton {
+    color: gray;
+}
+
+.Profile:hover .EditButton:hover {
+    background: rgb(235, 235, 235);
+    color: black;
+}
+
+
 @media (max-width: 800px) and (max-height: 900px) {
     img {
         width: 2rem;

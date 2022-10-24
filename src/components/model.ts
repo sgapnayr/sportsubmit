@@ -1,6 +1,10 @@
 export interface Athlete {
     _id: string
     athleteName: string
+    name: string
+    tm: string
+    sprt: string
+    gndr: string
     dob: string
     location: string
     team: string

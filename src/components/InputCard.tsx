@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Styles.css'
 import Axios from 'axios'
-import { StringSchemaDefinition } from 'mongoose'
 import { Athlete } from './model'
-import { idText } from 'typescript'
+import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 
 interface Props {
     next: number
@@ -31,9 +30,22 @@ interface Props {
 }
 
 const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
+    const [newInputActive, setNewInputActive] = useState<boolean>(false)
     const [newAthleteName, setnewAthleteName] = useState<string>('')
 
-    const addToList = () => {
+    const firstAdd = () => {
+        if (!athleteName || !dob || !location || !team) {
+            window.alert('Please fill out all of our sections before continuing!')
+            return
+        }
+        setNext(next + 1)
+    }
+
+    const secondAdd = () => {
+        if (!athleteName || !dob || !location || !team || !sport || !aboutProfile || !interests) {
+            window.alert('Ah, I see you tried to pull a fast one... Please fill out the remaining sections before moving on.')
+            return
+        }
         setNext(next + 1)
     }
 
@@ -57,6 +69,10 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
     }
 
     const submitButton = () => {
+        if (!athleteName || !dob || !location || !team || !sport || !aboutProfile || !interests) {
+            window.alert('Please fill out all of our sections before continuing...')
+            return
+        }
         setNext(0)
         setGender(3)
         setAthleteName('')
@@ -92,6 +108,28 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 <div className="InputDiv">
                     <h1>Thanks for you submission!</h1>
                 </div>
+
+                <div className="Profiles">
+                    {athleteList.map(athlete => {
+                        return (
+                            <div className='Profile'>
+                                <div key={Date.now()}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
+                                {newInputActive ?
+                                    <input
+                                        type='text'
+                                        placeholder={athlete.name}
+                                        onChange={(e) => setnewAthleteName(e.target.value)}
+                                    />
+                                    : null}
+                                <div className="Icons">
+                                    <button className='EditButton' onClick={() => updateAthlete(athlete._id)}>< AiFillEdit /></button>
+                                    <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+
                 <button className='Button' onClick={() => setNext(0)}>
                     Done
                 </button>
@@ -143,7 +181,7 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     <h3>Interests</h3>
                     <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' onChange={(e) => setInterests(e.target.value)} value={interests} />
                 </div>
-                <button className='Button' onClick={addToList}>
+                <button className='Button' onClick={secondAdd}>
                     Next
                 </button>
 
@@ -173,24 +211,9 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     <button className={gender === 2 ? 'GenderButtonActive' : 'GenderButton'} onClick={otherButton}>Other</button>
                 </div>
             </div>
-            <button className='Button' onClick={addToList}>
+            <button className='Button' onClick={firstAdd}>
                 Next
             </button>
-
-            {athleteList.map(athlete => {
-                return (
-                    <>
-                        <div key={Date.now()}>{athlete.dob}</div>
-                        <input
-                            type='text'
-                            placeholder='Edit Athlete Name...'
-                            onChange={(e) => setnewAthleteName(e.target.value)}
-                        />
-                        <button onClick={() => updateAthlete(athlete._id)}>Update (ICON)</button>
-                        <button onClick={() => deleteAthlete(athlete._id)}>Delete</button>
-                    </>
-                )
-            })}
 
         </div>
     )
