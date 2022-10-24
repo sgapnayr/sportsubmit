@@ -144,6 +144,12 @@ img {
     color: black;
 }
 
+.Red:active {
+    transform: scale(.8);
+    background: white;
+    color: black;
+}
+
 .GenderButtonDiv {
     border-radius: 35px;
     overflow: hidden;
@@ -209,6 +215,19 @@ img {
     width: 90%;
     right: 5%;
     z-index: 1;
+    border-radius: 20px;
+    padding-bottom: 2.5rem;
+}
+
+.DeletePage {
+    position: absolute;
+    top: 10%;
+    background: rgb(8, 8, 8);
+    background: linear-gradient(133deg, rgb(16, 16, 16) 0%, rgb(34, 34, 41) 50%, rgb(16, 16, 16) 90%, rgb(20, 20, 20) 100%);
+    box-shadow: 1px 1px 10px 1000px rgba(0, 0, 0, .45);
+    width: 90%;
+    right: 5%;
+    z-index: 2;
     border-radius: 20px;
     padding-bottom: 2.5rem;
 }
@@ -284,7 +303,7 @@ p {
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    margin: .75rem;
+    margin: .5rem;
     transition: .2s all ease-in-out;
     border-radius: 30px;
     transition: .2s all ease-in-out;

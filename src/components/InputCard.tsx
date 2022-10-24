@@ -37,11 +37,14 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
     const [newAthleteName, setnewAthleteName] = useState<string>('')
 
     const firstAdd = () => {
-        if (!athleteName || !dob || !location || !team) {
+        if (next && !athleteName || !dob || !location || !team) {
             window.alert('Please fill out all of our sections before continuing!')
             return
         }
-        setNext(next + 1)
+        if (next < 1) {
+            setNext(next + 1)
+        }
+        return
     }
 
     const secondAdd = () => {
