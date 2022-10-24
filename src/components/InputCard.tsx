@@ -156,7 +156,6 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 Next
             </button>
 
-            <h1>Athletes</h1>
             {/* {athleteList.map(athlete => {
                 return <li key={Date.now()}>{athlete.dob}</li>
             })} */}
