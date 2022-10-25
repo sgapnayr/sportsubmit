@@ -5,6 +5,7 @@ import { Athlete } from './model'
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import { FcNext } from 'react-icons/fc'
 import InputDiv from './InputDiv/InputDiv'
+import Button from './Button/Button'
 
 interface Props {
     next: number
@@ -121,13 +122,9 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         <div className='InputCard'>
 
             {next === 5 ? <div className='Confirmation'>
-                <div className="InputDiv">
-                    <h1>
-                        <div className="ButtonText">
-                            <div className="Text">Profiles</div>
-                        </div>
-                    </h1>
-                </div>
+                <h1>
+                    <div className="Text"><strong>Profiles</strong></div>
+                </h1>
 
                 <div className="Profiles">
                     {athleteList.map((athlete, idx) => {
@@ -155,32 +152,21 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     })}
                 </div>
 
-                <button className='Button' onClick={() => setNext(0)}>
-                    <div className="ButtonText">
-                        <div className="Text">Done</div>
-                        <div className="Icon"><AiOutlineCheck /></div>
+                <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
 
-                    </div>
-                </button>
             </div > : null}
 
             {next === 3 ? <div className='Confirmation'>
-                <div className="InputDiv">
-                    <h1>
-                        <div className="ButtonText">
-                            <div className="Text">Thank you for your submission!</div>
-                        </div>
-                    </h1>
-                </div>
+                <h1>
+                    <div className="Text">Thank you for your submission!</div>
+                </h1>
 
                 <div className="Profiles">
                     {athleteList.map((athlete, idx) => {
                         return (
                             <div className='Profile'>
                                 {newInputActive ?
-                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})
-
-                                    </div>
+                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
                                     : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
                                 <input
                                     type='text'
@@ -199,20 +185,13 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     })}
                 </div>
 
-                <button className='Button' onClick={() => setNext(0)}>
-                    <div className="ButtonText">
-                        <div className="Text">Done</div>
-                        <div className="Icon"><AiOutlineCheck /></div>
+                <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
 
-                    </div>
-                </button>
             </div > : null}
 
             {
                 next === 2 ? <div className='EditPage'>
-                    <div className="InputDiv">
-                        <h1>Your Profile</h1>
-                    </div>
+                    <h1>Your Profile</h1>
                     <div className="ProfilePage">
                         <p><span className='ProfileTag'>Name:</span> {athleteName}</p>
                         <p><span className='ProfileTag'>Date of Birth:</span> {dob}</p>
@@ -223,77 +202,46 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                         <p><span className='ProfileTag'>About:</span> {aboutProfile.length > 10 ? aboutProfile.slice(0, 20) + '...' : aboutProfile}</p>
                         <p><span className='ProfileTag'>Interests:</span> {interests}</p>
                     </div>
-                    <button className='Button' onClick={submitButton}>
-                        <div className="ButtonText">
-                            <div className="Text">Confirm</div>
-                            <div className="Icon"><FcNext /></div>
-                        </div>
-                    </button>
-                    <button className='Button Red' onClick={() => setNext(next - 1)}>
-                        <div className="ButtonText">
-                            <div className="Icon Reverse"><FcNext /></div>
-                            <div className="Text">Go Back</div>
-                        </div>
-                    </button>
+
+                    <Button onClickFunction={submitButton} buttonText={'Confirm'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
+                    <Button onClickFunction={() => setNext(next - 1)} buttonText={'Go Back'} buttonIcon={<FcNext />} extraClasses={'Red'} iconReverse={true} />
+
                 </div> : null
             }
 
             {
                 next === 1 ? <div className='PopUp'>
-                    <div className="InputDiv Sport">
-                        <h3>Sport:</h3>
-                        <select onChange={(e) => addSport(e.target.value)}>
-                            <option value="none">Pick Your Sport</option>
-                            <option value="American Football">American Football</option>
-                            <option value="Archery">Archery</option>
-                            <option value="Automobile Racing">Automobile Racing</option>
-                            <option value="Baseball">Baseball</option>
-                            <option value="Basketball">Basketball</option>
-                            <option value="Badminton">Badminton</option>
-                            <option value="Cycling">Cycling</option>
-                            <option value="Golf">Golf</option>
-                            <option value="Snow Boarding">Snow Boarding</option>
-                            <option value="Soccer">Soccer</option>
-                            <option value="Swimming">Swimming</option>
-                            <option value="Tennis">Tennis</option>
-                            <option value="Etc...">Etc...</option>
-                        </select>
-                    </div>
-                    <div className="InputDiv">
-                        <h3>About</h3>
-                        <input type="text" className='InputBox About' placeholder='How did you get into your sport?' onChange={(e) => setAboutProfile(e.target.value)} value={aboutProfile} />
-                    </div>
-                    <div className="InputDiv">
-                        <h3>Interests</h3>
-                        <input type="text" className='InputBox' placeholder='(e.g. Cornhole, Fishing)' onChange={(e) => setInterests(e.target.value)} value={interests} />
-                    </div>
-                    <button className='Button' onClick={secondAdd}>
-                        <div className="ButtonText">
-                            <div className="Text">Next</div>
-                            <div className="Icon"><FcNext /></div>
-                        </div>
-                    </button>
-                    <button className='Button Red' onClick={() => setNext(next - 1)}>
-                        <div className="ButtonText">
-                            <div className="Icon Reverse"><FcNext /></div>
-                            <div className="Text">Go Back</div>
-                        </div>
-                    </button>
+                    <h3>Sport:</h3>
+                    <select onChange={(e) => addSport(e.target.value)}>
+                        <option value="none">Pick Your Sport</option>
+                        <option value="American Football">American Football</option>
+                        <option value="Archery">Archery</option>
+                        <option value="Automobile Racing">Automobile Racing</option>
+                        <option value="Baseball">Baseball</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Golf">Golf</option>
+                        <option value="Snow Boarding">Snow Boarding</option>
+                        <option value="Soccer">Soccer</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Tennis">Tennis</option>
+                        <option value="Etc...">Etc...</option>
+                    </select>
+
+                    <InputDiv functionUsed={setAboutProfile} valueUsed={aboutProfile} titleText={'About'} type={'text'} placeholder='How did you get into your sport?' />
+                    <InputDiv functionUsed={setInterests} valueUsed={interests} titleText={'Interests'} type={'text'} placeholder='(e.g. Cornhole, Fishing)' />
+                    <Button onClickFunction={secondAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
+                    <Button onClickFunction={() => setNext(next - 1)} buttonText={'Go Back'} buttonIcon={<FcNext />} extraClasses={'Red'} iconReverse={true} />
 
                 </div> : null
             }
 
-            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} />
-            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} />
+            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} placeholder='Enter Name Here...' />
+            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} placeholder='(e.g. 10-09-1993)' />
+            <InputDiv functionUsed={setLocation} valueUsed={location} titleText={'Location:'} type={'text'} placeholder='(e.g. Boston)' />
+            <InputDiv functionUsed={setTeam} valueUsed={team} titleText={'Team:'} type={'text'} placeholder='(e.g. New York Giants)' />
 
-            <div className="InputDiv">
-                <h3>Location:</h3>
-                <input type="text" className='InputBox' placeholder='(e.g. Boston)' onChange={(e) => setLocation(e.target.value)} value={location} />
-            </div>
-            <div className="InputDiv">
-                <h3>Team:</h3>
-                <input type="text" className='InputBox' placeholder='(e.g. New York Giants)' onChange={(e) => setTeam(e.target.value)} value={team} />
-            </div>
             <div className="InputDiv">
                 <h3>Gender</h3>
                 <div className="GenderButtonDiv">
@@ -302,18 +250,9 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                     <button className={gender === 2 ? 'GenderButtonActive' : 'GenderButton'} onClick={otherButton}>Other</button>
                 </div>
             </div>
-            <button className='Button' onClick={firstAdd}>
-                <div className="ButtonText">
-                    <div className="Text">Next</div>
-                    <div className="Icon"><FcNext /></div>
-                </div>
-            </button>
 
-            <button className='Button Red' onClick={showData}>
-                <div className="ButtonText">
-                    <div className="Text">Show Data</div>
-                </div>
-            </button>
+            <Button onClickFunction={firstAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
+            <Button onClickFunction={showData} buttonText={'Show Data'} buttonIcon={''} extraClasses={'Red'} iconReverse={true} />
 
         </div >
     )
