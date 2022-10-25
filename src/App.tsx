@@ -18,6 +18,7 @@ function App() {
   const [interests, setInterests] = useState<string>('')
 
   const [athleteList, setAthleteList] = useState<Athlete[]>([])
+  const [athleteNames, setAthleteNames] = useState<string[]>([])
 
   return (
     <div className="App">

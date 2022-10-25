@@ -35,6 +35,10 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
     const [newInputActive, setNewInputActive] = useState<boolean>(false)
     const [newAthleteName, setnewAthleteName] = useState<string>('')
 
+    const showData = () => {
+        setNext(5)
+    }
+
     const firstAdd = () => {
         if (next && !athleteName || !dob || !location || !team) {
             window.alert('Please fill out all of our sections before continuing!')
@@ -107,8 +111,58 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         Axios.delete(`http://localhost:3001/delete/${id}`)
     }
 
+    const changeAthleteList = (idx: number, newName: string) => {
+        const newList = athleteList;
+        newList[idx].name = newName
+        setAthleteList(newList)
+    }
+
     return (
         <div className='InputCard'>
+
+            {next === 5 ? <div className='Confirmation'>
+                <div className="InputDiv">
+                    <h1>
+                        <div className="ButtonText">
+                            <div className="Text">Profiles</div>
+                        </div>
+                    </h1>
+                </div>
+
+                <div className="Profiles">
+                    {athleteList.map((athlete, idx) => {
+                        return (
+                            <div className='Profile'>
+                                {newInputActive ?
+                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})
+
+                                    </div>
+                                    : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
+                                <input
+                                    type='text'
+                                    placeholder={athlete.name}
+                                    onSubmit={(e) => changeAthleteList(idx, athleteName)}
+                                    className='NewInput'
+                                    onChange={(e) => setAthleteName(e.target.value)}
+                                    value={athleteName}
+                                />
+                                <div className="Icons">
+                                    <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
+                                    <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+
+                <button className='Button' onClick={() => setNext(0)}>
+                    <div className="ButtonText">
+                        <div className="Text">Done</div>
+                        <div className="Icon"><AiOutlineCheck /></div>
+
+                    </div>
+                </button>
+            </div > : null}
 
             {next === 3 ? <div className='Confirmation'>
                 <div className="InputDiv">
@@ -120,19 +174,24 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 </div>
 
                 <div className="Profiles">
-                    {athleteList.map(athlete => {
+                    {athleteList.map((athlete, idx) => {
                         return (
                             <div className='Profile'>
-                                <div key={Date.now()}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
                                 {newInputActive ?
-                                    <input
-                                        type='text'
-                                        placeholder={athlete.name}
-                                        onChange={(e) => setnewAthleteName(e.target.value)}
-                                    />
-                                    : null}
+                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})
+
+                                    </div>
+                                    : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
+                                <input
+                                    type='text'
+                                    placeholder={athlete.name}
+                                    onSubmit={(e) => changeAthleteList(idx, athleteName)}
+                                    className='NewInput'
+                                    onChange={(e) => setAthleteName(e.target.value)}
+                                    value={athleteName}
+                                />
                                 <div className="Icons">
-                                    {/* <button className='EditButton' onClick={() => updateAthlete(athlete._id)}>< AiFillEdit /></button> */}
+                                    <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
                                     <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
                                 </div>
                             </div>
@@ -252,6 +311,12 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 <div className="ButtonText">
                     <div className="Text">Next</div>
                     <div className="Icon"><FcNext /></div>
+                </div>
+            </button>
+
+            <button className='Button Red' onClick={showData}>
+                <div className="ButtonText">
+                    <div className="Text">Show Data</div>
                 </div>
             </button>
 
