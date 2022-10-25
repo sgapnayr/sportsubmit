@@ -1,8 +1,8 @@
 import './App.css';
 import { useState } from 'react';
-import { Athlete } from './components/model';
-import InputCard from './components/InputCard';
 import Banner from './components/Banner/Banner';
+import InputCard from './components/InputCard/InputCard';
+import { Athlete } from './components/InputCard/model';
 
 function App() {
   const [next, setNext] = useState<number>(0)

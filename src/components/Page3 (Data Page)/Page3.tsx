@@ -3,7 +3,7 @@ import Button from '../Button/Button'
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import Axios from 'axios'
 import './Page3.css'
-import { Athlete } from '../model'
+import { Athlete } from '../InputCard/model'
 
 interface Props {
     titleText: string

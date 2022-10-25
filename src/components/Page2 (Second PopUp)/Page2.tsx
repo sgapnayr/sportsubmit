@@ -33,6 +33,7 @@ const PageTwoPopUp: React.FC<Props> = ({ next, setNext, gender, setGender, athle
             window.alert('Please fill out all of our sections before continuing...')
             return
         }
+
         setNext(0)
         setGender(3)
         setAthleteName('')
@@ -44,6 +45,7 @@ const PageTwoPopUp: React.FC<Props> = ({ next, setNext, gender, setGender, athle
         setSport('')
         setAboutProfile('')
         setInterests('')
+
         Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile, sprt: sport, about: aboutProfile, intrsts: interests })
     }
     return (

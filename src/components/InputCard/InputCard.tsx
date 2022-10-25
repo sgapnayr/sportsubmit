@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import './Styles.css'
 import Axios from 'axios'
 import { Athlete } from './model'
-import Page0 from './Page0/Page0'
-import Page1 from './Page1 (First PopUp)/Page1'
-import Page2 from './Page2 (Second PopUp)/Page2'
-import Page3 from './Page3 (Data Page)/Page3'
+import Page0 from '../Page0/Page0'
+import Page1 from '../Page1 (First PopUp)/Page1'
+import Page2 from '../Page2 (Second PopUp)/Page2'
+import Page3 from '../Page3 (Data Page)/Page3'
 
 interface Props {
     next: number
