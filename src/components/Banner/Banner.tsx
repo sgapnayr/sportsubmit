@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from './Image'
 import TitleCard from './TitleCard'
 

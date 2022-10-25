@@ -7,12 +7,12 @@
     -webkit-text-fill-color: transparent;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
     font-style: italic;
-    margin-top: -4rem;
+    margin-top: -5rem;
 }
 
 @media (max-width: 800px) and (max-height: 900px) {
     .Title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         padding-top: 0rem;
     }
 
