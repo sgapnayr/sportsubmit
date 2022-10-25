@@ -161,11 +161,11 @@ img {
     background: linear-gradient(133deg, rgb(82, 82, 82) 0%, rgba(50, 50, 60, 1) 47%, rgba(65, 65, 65, 1) 90%, rgb(65, 65, 65) 100%);
     padding: 1.2rem;
     width: 33.333%;
-    border: 1px solid rgba(255, 255, 255, .1);
     color: white;
     font-size: 1rem;
     cursor: pointer;
     transition: .2s all ease-in-out;
+    border: none;
 }
 
 .GenderButton:hover {
