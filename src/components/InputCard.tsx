@@ -6,6 +6,7 @@ import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import { FcNext } from 'react-icons/fc'
 import InputDiv from './InputDiv/InputDiv'
 import Button from './Button/Button'
+import InterActiveButton from './InterActiveButton/InterActiveButton'
 
 interface Props {
     next: number
@@ -59,21 +60,6 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
         setNext(next + 1)
     }
 
-    const maleButton = () => {
-        setGender(0)
-        setGenderProfile('Male')
-    }
-
-    const femaleButton = () => {
-        setGender(1)
-        setGenderProfile('Female')
-    }
-
-    const otherButton = () => {
-        setGender(2)
-        setGenderProfile('Other')
-    }
-
     const addSport = (sport: string) => {
         setSport(sport)
     }
@@ -120,78 +106,47 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
 
     return (
         <div className='InputCard'>
+            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} placeholder='Enter Name Here...' />
+            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} placeholder='(e.g. 10-09-1993)' />
+            <InputDiv functionUsed={setLocation} valueUsed={location} titleText={'Location:'} type={'text'} placeholder='(e.g. Boston)' />
+            <InputDiv functionUsed={setTeam} valueUsed={team} titleText={'Team:'} type={'text'} placeholder='(e.g. New York Giants)' />
+            <InterActiveButton gender={gender} setGender={setGender} setGenderProfile={setGenderProfile} />
+            <Button onClickFunction={firstAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
+            <Button onClickFunction={showData} buttonText={'Show Data'} buttonIcon={''} extraClasses={'Red'} iconReverse={true} />
 
-            {next === 5 ? <div className='Confirmation'>
-                <h1>
-                    <div className="Text"><strong>Profiles</strong></div>
-                </h1>
+            {
+                next === 1 ?
+                    <div className='PopUp'>
+                        <h3>Sport:</h3>
+                        <select onChange={(e) => addSport(e.target.value)}>
+                            <option value="none">Pick Your Sport</option>
+                            <option value="American Football">American Football</option>
+                            <option value="Archery">Archery</option>
+                            <option value="Automobile Racing">Automobile Racing</option>
+                            <option value="Baseball">Baseball</option>
+                            <option value="Basketball">Basketball</option>
+                            <option value="Badminton">Badminton</option>
+                            <option value="Cycling">Cycling</option>
+                            <option value="Golf">Golf</option>
+                            <option value="Snow Boarding">Snow Boarding</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Tennis">Tennis</option>
+                            <option value="Etc...">Etc...</option>
+                        </select>
 
-                <div className="Profiles">
-                    {athleteList.map((athlete, idx) => {
-                        return (
-                            <div className='Profile'>
-                                {newInputActive ?
-                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})
+                        <InputDiv functionUsed={setAboutProfile} valueUsed={aboutProfile} titleText={'About'} type={'text'} placeholder='How did you get into your sport?' />
+                        <InputDiv functionUsed={setInterests} valueUsed={interests} titleText={'Interests'} type={'text'} placeholder='(e.g. Cornhole, Fishing)' />
+                        <Button onClickFunction={secondAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
+                        <Button onClickFunction={() => setNext(next - 1)} buttonText={'Go Back'} buttonIcon={<FcNext />} extraClasses={'Red'} iconReverse={true} />
 
-                                    </div>
-                                    : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
-                                <input
-                                    type='text'
-                                    placeholder={athlete.name}
-                                    onSubmit={(e) => changeAthleteList(idx, athleteName)}
-                                    className='NewInput'
-                                    onChange={(e) => setAthleteName(e.target.value)}
-                                    value={athleteName}
-                                />
-                                <div className="Icons">
-                                    <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
-                                    <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-
-                <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
-
-            </div > : null}
-
-            {next === 3 ? <div className='Confirmation'>
-                <h1>
-                    <div className="Text">Thank you for your submission!</div>
-                </h1>
-
-                <div className="Profiles">
-                    {athleteList.map((athlete, idx) => {
-                        return (
-                            <div className='Profile'>
-                                {newInputActive ?
-                                    <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
-                                    : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
-                                <input
-                                    type='text'
-                                    placeholder={athlete.name}
-                                    onSubmit={(e) => changeAthleteList(idx, athleteName)}
-                                    className='NewInput'
-                                    onChange={(e) => setAthleteName(e.target.value)}
-                                    value={athleteName}
-                                />
-                                <div className="Icons">
-                                    <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
-                                    <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-
-                <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
-
-            </div > : null}
+                    </div>
+                    : null
+            }
 
             {
                 next === 2 ? <div className='EditPage'>
-                    <h1>Your Profile</h1>
+                    <h1><strong>Your Profile</strong></h1>
                     <div className="ProfilePage">
                         <p><span className='ProfileTag'>Name:</span> {athleteName}</p>
                         <p><span className='ProfileTag'>Date of Birth:</span> {dob}</p>
@@ -210,49 +165,76 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
             }
 
             {
-                next === 1 ? <div className='PopUp'>
-                    <h3>Sport:</h3>
-                    <select onChange={(e) => addSport(e.target.value)}>
-                        <option value="none">Pick Your Sport</option>
-                        <option value="American Football">American Football</option>
-                        <option value="Archery">Archery</option>
-                        <option value="Automobile Racing">Automobile Racing</option>
-                        <option value="Baseball">Baseball</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Badminton">Badminton</option>
-                        <option value="Cycling">Cycling</option>
-                        <option value="Golf">Golf</option>
-                        <option value="Snow Boarding">Snow Boarding</option>
-                        <option value="Soccer">Soccer</option>
-                        <option value="Swimming">Swimming</option>
-                        <option value="Tennis">Tennis</option>
-                        <option value="Etc...">Etc...</option>
-                    </select>
+                next === 3 ? <div className='Confirmation'>
+                    <h1>
+                        <div className="SubmitText Text">Thank you for your submission!</div>
+                    </h1>
 
-                    <InputDiv functionUsed={setAboutProfile} valueUsed={aboutProfile} titleText={'About'} type={'text'} placeholder='How did you get into your sport?' />
-                    <InputDiv functionUsed={setInterests} valueUsed={interests} titleText={'Interests'} type={'text'} placeholder='(e.g. Cornhole, Fishing)' />
-                    <Button onClickFunction={secondAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
-                    <Button onClickFunction={() => setNext(next - 1)} buttonText={'Go Back'} buttonIcon={<FcNext />} extraClasses={'Red'} iconReverse={true} />
+                    <div className="Profiles">
+                        {athleteList.map((athlete, idx) => {
+                            return (
+                                <div className='Profile'>
+                                    {newInputActive ?
+                                        <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
+                                        : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
+                                    <input
+                                        type='text'
+                                        placeholder={athlete.name}
+                                        onSubmit={(e) => changeAthleteList(idx, athleteName)}
+                                        className='NewInput'
+                                        onChange={(e) => setAthleteName(e.target.value)}
+                                        value={athleteName}
+                                    />
+                                    <div className="Icons">
+                                        <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
+                                        <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
 
-                </div> : null
+                    <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
+
+                </div > : null
             }
 
-            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} placeholder='Enter Name Here...' />
-            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} placeholder='(e.g. 10-09-1993)' />
-            <InputDiv functionUsed={setLocation} valueUsed={location} titleText={'Location:'} type={'text'} placeholder='(e.g. Boston)' />
-            <InputDiv functionUsed={setTeam} valueUsed={team} titleText={'Team:'} type={'text'} placeholder='(e.g. New York Giants)' />
+            {
+                next === 5 ? <div className='Confirmation'>
+                    <h1>
+                        <div className="Text"><strong>Profiles</strong></div>
+                    </h1>
 
-            <div className="InputDiv">
-                <h3>Gender</h3>
-                <div className="GenderButtonDiv">
-                    <button className={gender === 0 ? 'GenderButtonActive' : 'GenderButton'} onClick={maleButton} >Male</button>
-                    <button className={gender === 1 ? 'GenderButtonActive' : 'GenderButton'} onClick={femaleButton} >Female</button>
-                    <button className={gender === 2 ? 'GenderButtonActive' : 'GenderButton'} onClick={otherButton}>Other</button>
-                </div>
-            </div>
+                    <div className="Profiles">
+                        {athleteList.map((athlete, idx) => {
+                            return (
+                                <div className='Profile'>
+                                    {newInputActive ?
+                                        <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})
 
-            <Button onClickFunction={firstAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
-            <Button onClickFunction={showData} buttonText={'Show Data'} buttonIcon={''} extraClasses={'Red'} iconReverse={true} />
+                                        </div>
+                                        : <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>}
+                                    <input
+                                        type='text'
+                                        placeholder={athlete.name}
+                                        onSubmit={(e) => changeAthleteList(idx, athleteName)}
+                                        className='NewInput'
+                                        onChange={(e) => setAthleteName(e.target.value)}
+                                        value={athleteName}
+                                    />
+                                    <div className="Icons">
+                                        <button className='EditButton' onClick={() => setNewInputActive(!newInputActive)}>< AiFillEdit /></button>
+                                        <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                    <Button onClickFunction={() => setNext(0)} buttonText={'Done'} buttonIcon={<AiOutlineCheck />} extraClasses={''} iconReverse={false} />
+
+                </div > : null
+            }
 
         </div >
     )

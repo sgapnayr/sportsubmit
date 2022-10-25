@@ -80,3 +80,9 @@
 .none {
     display: none;
 }
+
+@media (max-width: 800px) and (max-height: 900px) {
+    .Button {
+        font-size: 1rem;
+    }
+}

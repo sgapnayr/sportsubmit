@@ -1,0 +1,62 @@
+.InterActiveButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: -.5rem;
+}
+
+
+.GenderButtonDiv {
+    border-radius: 35px;
+    overflow: hidden;
+    width: 80%;
+}
+
+.GenderButton {
+    background: rgb(25, 25, 25);
+    background: linear-gradient(133deg, rgb(82, 82, 82) 0%, rgba(50, 50, 60, 1) 47%, rgba(65, 65, 65, 1) 90%, rgb(65, 65, 65) 100%);
+    padding: 1.2rem;
+    width: 33.333%;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+    border: none;
+}
+
+.GenderButton:hover {
+    background: rgb(234, 234, 234);
+    color: gray;
+}
+
+.GenderButton:active {
+    background: white;
+    color: black;
+}
+
+.GenderButtonActive {
+    background: white;
+    color: black;
+    padding: 1.2rem;
+    width: 33.333%;
+    border: 1px solid rgba(255, 255, 255, .1);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+}
+
+.GenderButton:focus {
+    box-shadow: 1px 1px 10px 5px rgba(255, 255, 255, .3);
+}
+
+
+@media (max-width: 800px) and (max-height: 900px) {
+    .GenderButton {
+        padding: .5rem;
+    }
+
+    .GenderButtonActive {
+        padding: .5rem;
+    }
+}

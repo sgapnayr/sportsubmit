@@ -16,9 +16,7 @@ function App() {
   const [sport, setSport] = useState<string>('')
   const [aboutProfile, setAboutProfile] = useState<string>('')
   const [interests, setInterests] = useState<string>('')
-
   const [athleteList, setAthleteList] = useState<Athlete[]>([])
-  const [athleteNames, setAthleteNames] = useState<string[]>([])
 
   return (
     <div className="App">
