@@ -286,7 +286,7 @@ p {
 
 .Profiles {
     overflow: scroll;
-    height: 15rem;
+    height: 12rem;
     display: flex;
     align-items: center;
     flex-direction: column;
