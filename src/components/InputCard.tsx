@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { Athlete } from './model'
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import { FcNext } from 'react-icons/fc'
-import { FiThumbsUp } from 'react-icons/fi'
+import InputDiv from './InputDiv/InputDiv'
 
 interface Props {
     next: number
@@ -283,14 +283,9 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                 </div> : null
             }
 
-            <div className="InputDiv">
-                <h3>Enter Athlete Name:</h3>
-                <input type="text" className='InputBox' placeholder='Enter Athlete Name...' onChange={(e) => setAthleteName(e.target.value)} value={athleteName} />
-            </div>
-            <div className="InputDiv">
-                <h3>Date of Birth:</h3>
-                <input type="date" className='InputBox Date' placeholder='Oct 23, 1999' onChange={(e) => setDob(e.target.value)} value={dob} />
-            </div>
+            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} />
+            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} />
+
             <div className="InputDiv">
                 <h3>Location:</h3>
                 <input type="text" className='InputBox' placeholder='(e.g. Boston)' onChange={(e) => setLocation(e.target.value)} value={location} />
