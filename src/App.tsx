@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
 import './App.css';
-import Image from './components/Image';
-import InputCard from './components/InputCard';
+import { useState } from 'react';
 import { Athlete } from './components/model';
-import TitleCard from './components/TitleCard';
+import InputCard from './components/InputCard';
+import Banner from './components/Banner/Banner';
 
 function App() {
   const [next, setNext] = useState<number>(0)
@@ -20,8 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <Image />
-      <TitleCard />
+      <Banner />
       <InputCard
         setNext={setNext}
         next={next}

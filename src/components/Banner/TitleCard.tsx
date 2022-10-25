@@ -1,5 +1,4 @@
-import React from 'react'
-import './Styles.css'
+import './TitleCard.css'
 
 function TitleCard() {
     return (

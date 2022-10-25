@@ -1,5 +1,5 @@
-import React from 'react'
-import SportsIcon from '../assets/sportsicon.png'
+import SportsIcon from '../../assets/sportsicon.png'
+import './Image.css'
 
 function Image() {
     return (

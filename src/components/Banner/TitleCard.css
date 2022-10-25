@@ -1,0 +1,19 @@
+.Title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 1rem;
+    background: -webkit-linear-gradient(133deg, rgb(243, 227, 51) 20%, rgb(244, 188, 83) 46%, rgb(243, 227, 51) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    font-style: italic;
+    margin-top: -4rem;
+}
+
+@media (max-width: 800px) and (max-height: 900px) {
+    .Title {
+        font-size: 2rem;
+        padding-top: 0rem;
+    }
+
+}

@@ -1,8 +1,8 @@
 import React from 'react'
+import { FcNext } from 'react-icons/fc'
 import Button from '../Button/Button'
 import InputDiv from '../InputDiv/InputDiv'
 import InterActiveButton from '../InterActiveButton/InterActiveButton'
-import { FcNext } from 'react-icons/fc'
 import './Page0.css'
 
 interface Props {
