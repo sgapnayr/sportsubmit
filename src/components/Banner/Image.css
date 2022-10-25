@@ -10,13 +10,12 @@ img {
     img {
         width: 1.5rem;
         margin: 4rem 0 -2rem 0;
+        transform: translateY(90%);
     }
 
     .Image {
         justify-content: center;
         align-items: center;
-        position: absolute;
-        right: 50%;
-        top: 10%
+        margin: -1rem;
     }
 }
