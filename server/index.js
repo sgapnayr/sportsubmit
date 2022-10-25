@@ -45,10 +45,10 @@ app.put('/update', async (req, res) => {
     const id = req.body.id
 
     try {
-        await AthleteModel.findById(id, (error, updateAthlete) => {
-            updateAthlete.athleteName = newAthleteNames
-            updateAthlete.save()
-            res.send('update')
+        await AthleteModel.findById(id, (updatedAthlete) => {
+            updatedAthlete.athleteName = newAthleteName
+            updatedAthlete.save()
+            res.send("update")
         })
     } catch (error) {
         console.log(error)

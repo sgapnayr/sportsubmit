@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../Button/Button'
 import InputDiv from '../InputDiv/InputDiv'
 import { FcNext } from 'react-icons/fc'
+import './Page1.css'
 
 interface Props {
     sport: string
@@ -20,10 +21,10 @@ const PageOnePopUp: React.FC<Props> = ({ aboutProfile, setAboutProfile, interest
     }
 
     const secondAdd = () => {
-        // if (!sport || !aboutProfile || !interests) {
-        //     window.alert('Ah, I see you tried to pull a fast one... Please fill out the remaining sections before moving on.')
-        //     return
-        // }
+        if (!sport || !aboutProfile || !interests) {
+            window.alert('Ah, I see you tried to pull a fast one... Please fill out the remaining sections before moving on.')
+            return
+        }
         setNext(next + 1)
     }
 

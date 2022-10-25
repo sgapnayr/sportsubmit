@@ -1,0 +1,8 @@
+.InputCard {
+    background: rgb(8, 8, 8);
+    background: linear-gradient(133deg, rgb(16, 16, 16) 0%, rgb(34, 34, 41) 50%, rgb(16, 16, 16) 90%, rgb(20, 20, 20) 100%);
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    padding-bottom: 2.5rem;
+}

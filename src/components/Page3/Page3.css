@@ -1,0 +1,93 @@
+.Confirmation {
+    position: absolute;
+    top: 20%;
+    background: rgb(8, 8, 8);
+    background: linear-gradient(133deg, rgb(16, 16, 16) 0%, rgb(34, 34, 41) 50%, rgb(16, 16, 16) 90%, rgb(20, 20, 20) 100%);
+    box-shadow: 1px 1px 10px 1000px rgba(0, 0, 0, .45);
+    width: 90%;
+    right: 5%;
+    z-index: 1;
+    border-radius: 20px;
+    padding-bottom: 2.5rem;
+}
+
+.SubmitText {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+    background: -webkit-linear-gradient(133deg, rgb(221, 221, 221) 20%, rgb(243, 243, 243) 46%, rgb(196, 196, 196) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    font-style: italic;
+}
+
+
+.Profiles {
+    overflow: scroll;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: rgb(25, 25, 25);
+    background: linear-gradient(133deg, rgb(82, 82, 82) 0%, rgba(50, 50, 60, 1) 47%, rgba(65, 65, 65, 1) 90%, rgb(65, 65, 65) 100%);
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: .5rem;
+    transition: .2s all ease-in-out;
+    border-radius: 30px;
+    transition: .2s all ease-in-out;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    width: 90%;
+}
+
+.Profile:hover {
+    background: rgb(234, 234, 234);
+    color: gray;
+}
+
+.Profile:hover .EditButton {
+    color: gray;
+}
+
+.Profile:hover .EditButton:hover {
+    background: rgb(235, 235, 235);
+    color: black;
+}
+
+/* Fix Update Athlete Bug */
+.EditButton {
+    background: transparent;
+    padding: .5rem;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: .25rem;
+    transition: .2s all ease-in-out;
+    border-radius: 30px;
+    transition: .2s all ease-in-out;
+}
+
+.NewInput {
+    width: 10%;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .1);
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, .1);
+    margin-right: .25rem;
+    color: rgb(110, 110, 110);
+}
