@@ -1,6 +1,5 @@
-import React from 'react'
-import Button from '../Button/Button'
-import InputDiv from '../InputDiv/InputDiv'
+import Button from '../../Components/Button/Button'
+import InputDiv from '../../Components/InputDiv/InputDiv'
 import { FcNext } from 'react-icons/fc'
 import './Page1.css'
 

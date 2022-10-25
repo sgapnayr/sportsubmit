@@ -1,5 +1,4 @@
-import React from 'react'
-import Button from '../Button/Button'
+import Button from '../../Components/Button/Button'
 import { FcNext } from 'react-icons/fc'
 import Axios from 'axios'
 import './Page2.css'

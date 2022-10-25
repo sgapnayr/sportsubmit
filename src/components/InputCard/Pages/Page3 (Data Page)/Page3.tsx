@@ -1,9 +1,9 @@
-import React from 'react'
-import Button from '../Button/Button'
+
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import Axios from 'axios'
 import './Page3.css'
-import { Athlete } from '../InputCard/model'
+import { Athlete } from '../../model'
+import Button from '../../Components/Button/Button'
 
 interface Props {
     titleText: string
