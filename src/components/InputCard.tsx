@@ -197,6 +197,7 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                             <option value="Soccer">Soccer</option>
                             <option value="Swimming">Swimming</option>
                             <option value="Tennis">Tennis</option>
+                            <option value="Etc...">Etc...</option>
                         </select>
                     </div>
                     <div className="InputDiv">
