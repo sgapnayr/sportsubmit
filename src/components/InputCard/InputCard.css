@@ -25,6 +25,13 @@ p {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
 }
 
+h3 {
+    background: -webkit-linear-gradient(133deg, rgb(221, 221, 221) 20%, rgb(243, 243, 243) 46%, rgb(196, 196, 196) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+}
+
 @media (max-width: 800px) and (max-height: 900px) {
     img {
         width: 2rem;
