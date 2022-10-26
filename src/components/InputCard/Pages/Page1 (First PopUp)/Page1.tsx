@@ -29,7 +29,7 @@ const PageOnePopUp: React.FC<Props> = ({ aboutProfile, setAboutProfile, interest
 
     return (
         <div className='PopUp'>
-            <h3>Sport:</h3>
+            <h3>Sport</h3>
             <select onChange={(e) => addSport(e.target.value)}>
                 <option value="none">Pick Your Sport</option>
                 <option value="American Football">American Football</option>

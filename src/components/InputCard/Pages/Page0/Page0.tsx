@@ -45,10 +45,10 @@ const PageZero: React.FC<Props> = ({ next, setNext, athleteName, setAthleteName,
 
     return (
         <div className='InputCard'>
-            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name:'} type={'text'} placeholder='Enter Name Here...' />
-            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth:'} type={'date'} placeholder='(e.g. 10-09-1993)' />
-            <InputDiv functionUsed={setLocation} valueUsed={location} titleText={'Location:'} type={'text'} placeholder='(e.g. Boston)' />
-            <InputDiv functionUsed={setTeam} valueUsed={team} titleText={'Team:'} type={'text'} placeholder='(e.g. New York Giants)' />
+            <InputDiv functionUsed={setAthleteName} valueUsed={athleteName} titleText={'Enter Athlete Name'} type={'text'} placeholder='Enter Name Here...' />
+            <InputDiv functionUsed={setDob} valueUsed={dob} titleText={'Date of Birth'} type={'date'} placeholder='(e.g. 10-09-1993)' />
+            <InputDiv functionUsed={setLocation} valueUsed={location} titleText={'Location'} type={'text'} placeholder='(e.g. Boston)' />
+            <InputDiv functionUsed={setTeam} valueUsed={team} titleText={'Team'} type={'text'} placeholder='(e.g. New York Giants)' />
             <InterActiveButton gender={gender} setGender={setGender} setGenderProfile={setGenderProfile} />
             <Button onClickFunction={firstAdd} buttonText={'Next'} buttonIcon={<FcNext />} extraClasses={''} iconReverse={false} />
             <Button onClickFunction={showData} buttonText={'Show Data'} buttonIcon={''} extraClasses={'Red'} iconReverse={true} />
