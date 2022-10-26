@@ -31,12 +31,8 @@ app.post('/insert', async (req, res) => {
 
 app.get('/read', async (req, res) => {
     AthleteModel.find({}, (error, result) => {
-        if (error) {
-            res.send(error)
-        }
-
+        if (error) { res.send(error) }
         res.send(result)
-
     })
 })
 

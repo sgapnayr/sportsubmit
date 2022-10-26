@@ -80,7 +80,7 @@
 }
 
 .DeleteButton:active {
-    transform: scale(.8);
+    transform: scale(.75);
 }
 
 /* Fix Update Athlete Bug */
