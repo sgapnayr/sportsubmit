@@ -79,6 +79,10 @@
     transition: .2s all ease-in-out;
 }
 
+.DeleteButton:active {
+    transform: scale(.8);
+}
+
 /* Fix Update Athlete Bug */
 .NewInput {
     width: 10%;
