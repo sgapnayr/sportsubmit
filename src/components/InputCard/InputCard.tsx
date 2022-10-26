@@ -37,7 +37,7 @@ interface Props {
 const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, newAthleteName, setNewAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
 
     useEffect(() => {
-        Axios.get('/read').then((res) => {
+        Axios.get('http://localhost:3001/read').then((res) => {
             setAthleteList(res.data)
         })
     }, [athleteList])
