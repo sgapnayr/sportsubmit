@@ -45,7 +45,7 @@ const PageTwoPopUp: React.FC<Props> = ({ next, setNext, gender, setGender, athle
         setAboutProfile('')
         setInterests('')
 
-        Axios.post('http://localhost:3001/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile, sprt: sport, about: aboutProfile, intrsts: interests })
+        Axios.post('/insert', { name: athleteName, dob: dob, loc: location, tm: team, gndr: genderProfile, sprt: sport, about: aboutProfile, intrsts: interests })
     }
     return (
         <div className='PageTwoPopUp'>
