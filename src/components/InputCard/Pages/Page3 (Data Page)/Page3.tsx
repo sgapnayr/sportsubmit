@@ -29,7 +29,7 @@ const Page3: React.FC<Props> = ({ titleText, athleteList, setNext, newAthleteNam
                 <div className="SubmitText Text">{titleText === 'Thank you for your submission!' ? 'Thank you for your submission!' : <strong>Profiles</strong>}</div>
             </h1>
             <div className="Profiles">
-                {athleteList.map((athlete, idx) => {
+                {athleteList?.map((athlete, idx) => {
                     return (
                         <div className='Profile' key={idx}>
                             <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
