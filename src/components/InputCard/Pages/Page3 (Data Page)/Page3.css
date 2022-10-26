@@ -43,9 +43,8 @@
     font-size: 1rem;
     cursor: pointer;
     margin: .5rem;
-    transition: .2s all ease-in-out;
+    transition: .1s all ease-in-out;
     border-radius: 30px;
-    transition: .2s all ease-in-out;
     font-weight: bold;
     justify-content: space-between;
     padding: 0 1rem;
@@ -58,17 +57,16 @@
     color: gray;
 }
 
-.Profile:hover .EditButton {
-    color: gray;
+.Profile:hover .DeleteButton {
+    color: rgb(162, 162, 162);
 }
 
-.Profile:hover .EditButton:hover {
-    background: rgb(235, 235, 235);
+.Profile:hover .DeleteButton:hover {
+    background: transparent;
     color: black;
 }
 
-/* Fix Update Athlete Bug */
-.EditButton {
+.DeleteButton {
     background: transparent;
     padding: .5rem;
     border: none;
@@ -81,6 +79,7 @@
     transition: .2s all ease-in-out;
 }
 
+/* Fix Update Athlete Bug */
 .NewInput {
     width: 10%;
     border-radius: 30px;

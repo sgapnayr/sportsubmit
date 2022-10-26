@@ -1,4 +1,3 @@
-
 import { AiOutlineCheck, AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import Axios from 'axios'
 import './Page3.css'
@@ -9,13 +8,15 @@ interface Props {
     titleText: string
     athleteList: Athlete[]
     setNext: React.Dispatch<React.SetStateAction<number>>
+    newAthleteName: string[]
+    setNewAthleteName: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const Page3: React.FC<Props> = ({ titleText, athleteList, setNext }) => {
-    // Fix Bug
+const Page3: React.FC<Props> = ({ titleText, athleteList, setNext, newAthleteName, setNewAthleteName }) => {
     const updateAthlete = (id: string, newAthleteName: string) => {
         Axios.put(`http://localhost:3001/update/${id}`, { id: id, newAthleteName: newAthleteName })
         console.log(newAthleteName, id)
+        console.log(test)
     }
 
     const deleteAthlete = (id: string) => {
@@ -30,10 +31,10 @@ const Page3: React.FC<Props> = ({ titleText, athleteList, setNext }) => {
             <div className="Profiles">
                 {athleteList.map((athlete, idx) => {
                     return (
-                        <div className='Profile'>
+                        <div className='Profile' key={idx}>
                             <div key={idx}>{athlete.name.toUpperCase()}: {athlete.tm.slice(0, 10).toUpperCase()}, {athlete.sprt} - ({athlete.gndr === 'Female' ? 'F' : athlete.gndr === 'Male' ? 'M' : 'NB'})</div>
                             <div className="Icons">
-                                <button className='EditButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
+                                <button className='DeleteButton' onClick={() => deleteAthlete(athlete._id)}>< AiOutlineDelete /></button>
                             </div>
                         </div>
                     )

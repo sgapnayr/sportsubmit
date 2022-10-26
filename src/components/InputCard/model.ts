@@ -1,5 +1,6 @@
 export interface Athlete {
     _id: string
+    id: string
     athleteName: string
     name: string
     tm: string

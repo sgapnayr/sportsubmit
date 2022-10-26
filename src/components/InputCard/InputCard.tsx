@@ -14,6 +14,8 @@ interface Props {
     setGender: React.Dispatch<React.SetStateAction<number>>
     athleteName: string
     setAthleteName: React.Dispatch<React.SetStateAction<string>>
+    newAthleteName: string[]
+    setNewAthleteName: React.Dispatch<React.SetStateAction<string[]>>
     dob: string
     setDob: React.Dispatch<React.SetStateAction<string>>
     location: string
@@ -32,7 +34,7 @@ interface Props {
     setAthleteList: React.Dispatch<React.SetStateAction<Athlete[]>>
 }
 
-const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
+const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteName, setAthleteName, newAthleteName, setNewAthleteName, dob, setDob, location, setLocation, team, setTeam, genderProfile, setGenderProfile, sport, setSport, aboutProfile, setAboutProfile, interests, setInterests, athleteList, setAthleteList }) => {
 
     useEffect(() => {
         Axios.get('http://localhost:3001/read').then((res) => {
@@ -106,6 +108,8 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                             titleText={'Thank you for your submission!'}
                             athleteList={athleteList}
                             setNext={setNext}
+                            newAthleteName={newAthleteName}
+                            setNewAthleteName={setNewAthleteName}
                         />
 
                         : next === 5 ?
@@ -113,6 +117,8 @@ const InputCard: React.FC<Props> = ({ next, setNext, gender, setGender, athleteN
                                 titleText={''}
                                 athleteList={athleteList}
                                 setNext={setNext}
+                                newAthleteName={newAthleteName}
+                                setNewAthleteName={setNewAthleteName}
                             />
                             : null
             }

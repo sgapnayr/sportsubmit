@@ -8,6 +8,7 @@ function App() {
   const [next, setNext] = useState<number>(0)
   const [gender, setGender] = useState<number>(4)
   const [athleteName, setAthleteName] = useState<string>('')
+  const [newAthleteName, setNewAthleteName] = useState<string[]>([])
   const [dob, setDob] = useState<string>('')
   const [location, setLocation] = useState<string>('')
   const [team, setTeam] = useState<string>('')
@@ -27,6 +28,8 @@ function App() {
         setGender={setGender}
         athleteName={athleteName}
         setAthleteName={setAthleteName}
+        newAthleteName={newAthleteName}
+        setNewAthleteName={setNewAthleteName}
         dob={dob}
         setDob={setDob}
         location={location}

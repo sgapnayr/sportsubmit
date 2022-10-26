@@ -8,7 +8,7 @@ const AthleteModel = require('./models/Athlete')
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb+srv://ryanpags:123123123@sportsubmit.1cljpzm.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://ryanpags:123123123@sportsubmit.1cljpzm.mongodb.net/?retryWrites=true&w=majority/', {
     useNewUrlParser: true,
 })
 
